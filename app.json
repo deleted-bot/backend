@@ -1,0 +1,17 @@
+{
+	"name": "DeletedBot Backend",
+	"description": "The backend of DeletedBot.",
+	"repository": "https://github.com/deleted-bot/backend",
+	"env": {
+		"HOST": {
+            "description": "Replace <APPNAME-HERE> with your app's name.",
+			"value": "<APPNAME-HERE>.herokuapp.com"
+		},
+		"REDIS_ADDR": {
+			"description": "Redis address"
+		},
+		"REDIS_PASSWORD": {
+			"description": "Redis password"
+		}
+	}
+}
