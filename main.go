@@ -11,7 +11,7 @@ import (
 
 type session struct {
 	*redis.Client
-	Host string
+	FrontendHost, BackendHost string
 }
 
 func main() {
@@ -30,7 +30,7 @@ func main() {
 		log.Fatal("Couldn't connect to Redis: ", err.Error())
 	}
 
-	ses := session{Client: client, Host: os.Getenv("HOST")}
+	ses := session{Client: client, FrontendHost: os.Getenv("FRONTEND_HOST"), BackendHost: os.Getenv("BACKEND_HOST")}
 
 	r := gin.Default()
 	r.Use(cors.Default())

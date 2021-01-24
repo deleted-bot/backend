@@ -15,7 +15,7 @@ func (ses session) setWebhookForBot(token string) (string, error) {
 		return "", err
 	}
 
-	_, err = bot.Request(tgbotapi.NewWebhook("https://" + ses.Host + "/telegram/" + token))
+	_, err = bot.Request(tgbotapi.NewWebhook("https://" + ses.BackendHost + "/telegram/" + token))
 	if err != nil {
 		return "", err
 	}
@@ -50,7 +50,7 @@ func (ses session) telegram(c *gin.Context) {
 			msg.ParseMode = "HTML"
 			bot.Send(msg)
 
-			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Made with " + ses.Host))
+			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Made with " + ses.FrontendHost))
 
 		}
 

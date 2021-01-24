@@ -29,12 +29,13 @@ Notice: The backend, by itself, is pretty useless. So, once you're done self hos
 
 3. Set the following environment variables:
 
-   | Key            | Example               | Explaination                                                 |
-   | -------------- | --------------------- | ------------------------------------------------------------ |
-   | HOST           | deleted.bot.nu        | The host to which your website will be served. This link will appear in the messages sent by the bot as well. |
-   | PORT           | 80                    | The port the web server will listen on.                      |
-   | REDIS_ADDR     | localhost:6379        | The hostname of your Redis database                          |
-   | REDIS_PASSWORD | ExtremelySafePassword | The password of your Redis database. Leave empty if no password is set. |
+   | Key            | Example                  | Explaination                                                 |
+   | -------------- | ------------------------ | ------------------------------------------------------------ |
+   | FRONTEND_HOST  | deleted.bot.nu           | The host where your frontend is located. It will be sent in all /start messages. |
+   | BACKEND_HOST   | apidel.massivebox.eu.org | The host of your backend. All DeletedBots hosted on your instance will have their webhook set to this host. Make sure you have HTTPS! |
+   | PORT           | 80                       | The port the web server will listen on.                      |
+   | REDIS_ADDR     | localhost:6379           | The hostname of your Redis database                          |
+   | REDIS_PASSWORD | ExtremelySafePassword    | The password of your Redis database. Leave empty if no password is set. |
 
 4. Run your instance: if you're on a server, use `sudo nohup ./deletedbot-backend`, if you're using anything else use your common deploying technique.
 
