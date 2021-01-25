@@ -3,9 +3,12 @@
 	"description": "The backend of DeletedBot.",
 	"repository": "https://github.com/deleted-bot/backend",
 	"env": {
-		"HOST": {
-            "description": "Replace <APPNAME-HERE> with your app's name.",
+		"BACKEND_HOST": {
+			"description": "Replace <APPNAME-HERE> with your app's name.",
 			"value": "<APPNAME-HERE>.herokuapp.com"
+		},
+		"FRONTEND_HOST": {
+			"description": "URL where the frontend is hosted. This will be sent in all /start messages.",
 		},
 		"REDIS_ADDR": {
 			"description": "Redis address"
