@@ -15,6 +15,12 @@
 		},
 		"REDIS_PASSWORD": {
 			"description": "Redis password"
+		},
+		"ADMIN_USERNAME": {
+			"description": "Admin username"
+		},
+		"ADMIN_PASSWORD": {
+			"description": "Admin password"
 		}
 	}
 }

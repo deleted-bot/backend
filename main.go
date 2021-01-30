@@ -38,6 +38,9 @@ func main() {
 	r.POST("/setbot", ses.setBot)
 	r.POST("/telegram/:token", ses.telegram)
 
+	admin := r.Group("/admin", gin.BasicAuth(gin.Accounts{os.Getenv("ADMIN_USERNAME"): os.Getenv("ADMIN_PASSWORD")}))
+	admin.POST("/getbots", ses.getBots)
+
 	r.Run("0.0.0.0:" + os.Getenv("PORT"))
 
 }

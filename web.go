@@ -41,7 +41,7 @@ func (ses session) setBot(c *gin.Context) {
 
 	c.JSON(200, gin.H{
 		"ok":      true,
-		"message": "Created succesfully!",
+		"message": "Created successfully!",
 		"details": "Your bot should be working now. You can check it out at <a href='https://t.me/" + botUsername + "'>@" + botUsername + "</a>",
 	})
 

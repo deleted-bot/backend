@@ -5,10 +5,10 @@ This repo contains the code for DeletedBot's backend, including:
 - The API protocol to be used by the frontend
 - The endpoint for Telegram's webhook
 
-It uses Go Gin as web server and Redis as database. 
+It uses Go Gin as web server and Redis as database.  
 This project is released under GNU GPL v3.0, read the LICENSE file to know more. Contributions are always welcome!
 
-> The backend is split apart from the frontend for everyone who wants to follow the **Jamstack** way.
+> The backend is split apart from the frontend for everyone who wants to follow the **Jamstack** way.  
 > If you don't care about that, and you want an all-in-one solution which is **easier to deploy,** check out the [allinone](https://github.com/deleted-bot/allinone) repo.
 
 
@@ -36,10 +36,12 @@ Notice: The backend, by itself, is pretty useless. So, once you're done self hos
    | PORT           | 80                       | The port the web server will listen on.                      |
    | REDIS_ADDR     | localhost:6379           | The hostname of your Redis database                          |
    | REDIS_PASSWORD | ExtremelySafePassword    | The password of your Redis database. Leave empty if no password is set. |
+   | ADMIN_USERNAME | admin                    | The username required to log into the admin console.         |
+   | ADMIN_PASSWORD | ExtremelySafePassword    | The password required to log into the admin console.         |
 
 4. Run your instance: if you're on a server, use `sudo nohup ./deletedbot-backend`, if you're using anything else use your common deploying technique.
 
 5. That's it. Here's a cat to fill some space:
 
-![Maurizio the cat](https://i.imgur.com/58ZHjlC.gif)
+![Maurizio the cat](https://i.imgur.com/0RnAicK.gif)
 

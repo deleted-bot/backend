@@ -50,7 +50,7 @@ func (ses session) telegram(c *gin.Context) {
 			msg.ParseMode = "HTML"
 			bot.Send(msg)
 
-			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Made with " + ses.FrontendHost))
+			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Made with "+ses.FrontendHost))
 
 		}
 
