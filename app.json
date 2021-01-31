@@ -21,6 +21,10 @@
 		},
 		"ADMIN_PASSWORD": {
 			"description": "Admin password"
+		},
+		"GIN_MODE": {
+			"description": "Set to release for production, anything else for testing",
+            "value": "release"
 		}
 	}
 }

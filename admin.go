@@ -10,6 +10,7 @@ type getBotsReturn struct {
 	ChangedKey     int      `json:"changed_key"`
 	ChangedWebhook int      `json:"changed_webhook"`
 	Working        int      `json:"working"`
+	Total          int      `json:"total"`
 	Result         []getBot `json"result"`
 }
 
@@ -41,15 +42,16 @@ func (ses session) populateGetBotsReturn(keys []string) getBotsReturn {
 
 	var ret getBotsReturn
 	ret.Ok = true
+	ret.Total = len(keys)
 
 	for _, key := range keys {
 
 		ck := len(ret.Result)
-		token := ses.Get(key).String()
+		text, _ := ses.Get(key).Result()
 
 		ret.Result = append(ret.Result, getBot{
 			Token: key,
-			Text:  token,
+			Text:  text,
 		})
 
 		bot, err := tgbotapi.NewBotAPI(key)
@@ -61,8 +63,10 @@ func (ses session) populateGetBotsReturn(keys []string) getBotsReturn {
 			continue
 		}
 
+		ret.Result[ck].Username = bot.Self.UserName
+
 		webhookInfo, _ := bot.GetWebhookInfo()
-		if webhookInfo.URL != "https://"+ses.BackendHost+"/telegram/"+token {
+		if webhookInfo.URL != "https://"+ses.BackendHost+"/telegram/"+key {
 			ret.Result[ck].IsChangedWebhook = true
 			ret.ChangedWebhook++
 			continue
@@ -74,5 +78,37 @@ func (ses session) populateGetBotsReturn(keys []string) getBotsReturn {
 	}
 
 	return ret
+
+}
+
+func (ses session) unsetBot(c *gin.Context) {
+
+	token := c.PostForm("token")
+
+	doError := func(err error) {
+		c.JSON(503, gin.H{
+			"ok": true,
+			"message": "Internal error",
+			"details": err.Error(),
+		})
+	}
+
+	err := ses.unsetWebhookForBot(token)
+	if err != nil {
+		doError(err)
+		return
+	}
+
+	err = ses.Del(token).Err()
+	if err != nil {
+		doError(err)
+		return
+	}
+
+	c.JSON(200, gin.H{
+		"ok": true,
+		"message": "Webhook removed",
+		"details": "The webhook has been removed",
+	})
 
 }

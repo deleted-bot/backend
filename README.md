@@ -1,5 +1,7 @@
 # DeletedBot Backend
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/deleted-bot/backend)](https://goreportcard.com/report/github.com/deleted-bot/backend) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=deleted-bot_backend&metric=alert_status)](https://sonarcloud.io/dashboard?id=deleted-bot_backend) [![Build Status](https://travis-ci.com/deleted-bot/backend.svg?branch=main)](https://travis-ci.com/deleted-bot/backend)
+
 This repo contains the code for DeletedBot's backend, including:
 
 - The API protocol to be used by the frontend

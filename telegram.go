@@ -11,16 +11,24 @@ import (
 func (ses session) setWebhookForBot(token string) (string, error) {
 
 	bot, err := tgbotapi.NewBotAPI(token)
-	if err != nil {
-		return "", err
-	}
+	if err != nil { return "", err }
 
 	_, err = bot.Request(tgbotapi.NewWebhook("https://" + ses.BackendHost + "/telegram/" + token))
-	if err != nil {
-		return "", err
-	}
+	if err != nil { return "", err }
 
 	return bot.Self.UserName, nil
+
+}
+
+func (ses session) unsetWebhookForBot(token string) error {
+
+	bot, err := tgbotapi.NewBotAPI(token)
+	if err != nil { return err }
+
+	_, err = bot.Request(tgbotapi.RemoveWebhookConfig{})
+	if err != nil { return err }
+
+	return nil
 
 }
 
